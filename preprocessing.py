@@ -4,17 +4,17 @@ import nltk
 import requests
 import numpy as np
 from nltk.corpus import stopwords
-nltk.download('stopwords')
-nltk.download('punkt')
 from nltk import word_tokenize
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 import matplotlib.pyplot as plt
-from nltk.stem import WordNetLemmatizer
-from collections import Counter
 import ast
 
 # Download required NLTK resources
 nltk.download(['stopwords', 'punkt', 'wordnet'])
+
+# Initialize the stemmer outside the stemming function
+factory = StemmerFactory()
+stemmer = factory.create_stemmer()
 
 # Define text cleaning function
 def cleaning_text(text):
@@ -54,15 +54,8 @@ def remove_stopword(text, stop_words=stop_words):
 def tokenize(text):
     return word_tokenize(text)
 
-#def lemmatize(text):
- #   lemmatizer = WordNetLemmatizer()
-  #  words = word_tokenize(text)
-   # lemmatized_words = [lemmatizer.lemmatize(word) for word in words]
-    #return ' '.join(lemmatized_words)
-
+# Define stemming function
 def stemming(text):
-    factory = StemmerFactory()
-    stemmer = factory.create_stemmer()
     return stemmer.stem(text)
 
 # Define functions for TF-IDF calculation
