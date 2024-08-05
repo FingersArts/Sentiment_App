@@ -72,11 +72,11 @@ with tab4:
             df['label'] = df['sentiment_val'].map(sentiment_mapping)
 
             # Prepare data for Logistic Regression
-            words = ' '.join(preprocessed_df['casefolding']).split()
-            words = ['some_number' if word.isnumeric() else word for word in words]
-            stop_words = set(stopwords.words('indonesian'))
-            stop_words.update(['-', '*', '&', '.', '/', ':', '|'])
-            words = [word for word in words if word not in stop_words]
+            words = ' '.join(preprocessed_df['stemmedtext']).split()
+            #words = ['some_number' if word.isnumeric() else word for word in words]
+            #stop_words = set(stopwords.words('indonesian'))
+            #stop_words.update(['-', '*', '&', '.', '/', ':', '|'])
+            #words = [word for word in words if word not in stop_words]
             word_counts = Counter(words)
             features = [word for word, count in word_counts.most_common(1000)]
 
@@ -85,7 +85,7 @@ with tab4:
                     return [words.count(feature) for feature in features]
                 return np.array([count_features(text.split()) for text in texts])
 
-            X = transform_to_features(preprocessed_df['casefolding'], features)
+            X = transform_to_features(preprocessed_df['stemmedtext'], features)
             y = df['label'].values.astype(int)  # Use the newly created label column
 
             # Initialize and train the model with default parameters
