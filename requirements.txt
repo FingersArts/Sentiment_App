@@ -4,6 +4,4 @@ pandas
 nltk
 matplotlib
 requests
-re
 sastrawi
-ast
