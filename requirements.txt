@@ -1,7 +1,8 @@
 streamlit
 numpy
 pandas
-nltkmatplotlib
+nltk
+matplotlib
 collections
 requests
 re
