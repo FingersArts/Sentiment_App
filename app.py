@@ -71,17 +71,17 @@ with tab4:
             df['label'] = df['sentiment_val'].map(sentiment_mapping)
 
             # Prepare data for Logistic Regression
-            #words = ' '.join(preprocessed_df['stemmedtext']).split()
-            #word_counts = Counter(words)
-            #features = [word for word, count in word_counts.most_common(1000)]
+            words = ' '.join(preprocessed_df['stemmedtext']).split()
+            word_counts = Counter(words)
+            features = [word for word, count in word_counts.most_common(1000)]
 
-            #def transform_to_features(texts, features):
-            #    def count_features(words):
-            #        return [words.count(feature) for feature in features]
-            #    return np.array([count_features(text.split()) for text in texts])
+            def transform_to_features(texts, features):
+                def count_features(words):
+                    return [words.count(feature) for feature in features]
+                return np.array([count_features(text.split()) for text in texts])
 
-            #X = transform_to_features(preprocessed_df['stemmedtext'], features)
-            X = np.array(preprocessed_df['TF_IDF_Vec'].tolist())
+            X = transform_to_features(preprocessed_df['stemmedtext'], features)
+            #X = np.array(preprocessed_df['TF_IDF_Vec'].tolist())
             y = df['label'].values.astype(int)  # Use the newly created label column
 
             # Initialize and train the model with default parameters
