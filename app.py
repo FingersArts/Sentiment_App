@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from nltk.corpus import stopwords
 from collections import Counter
 from preprocessing import preprocess_and_calculate_tfidf, LogisticRegression
 from preprocessing import plot_confusion_matrix, k_fold_cross_validation
@@ -72,20 +71,17 @@ with tab4:
             df['label'] = df['sentiment_val'].map(sentiment_mapping)
 
             # Prepare data for Logistic Regression
-            words = ' '.join(preprocessed_df['stemmedtext']).split()
-            #words = ['some_number' if word.isnumeric() else word for word in words]
-            #stop_words = set(stopwords.words('indonesian'))
-            #stop_words.update(['-', '*', '&', '.', '/', ':', '|'])
-            #words = [word for word in words if word not in stop_words]
-            word_counts = Counter(words)
-            features = [word for word, count in word_counts.most_common(1000)]
+            #words = ' '.join(preprocessed_df['stemmedtext']).split()
+            #word_counts = Counter(words)
+            #features = [word for word, count in word_counts.most_common(1000)]
 
-            def transform_to_features(texts, features):
-                def count_features(words):
-                    return [words.count(feature) for feature in features]
-                return np.array([count_features(text.split()) for text in texts])
+            #def transform_to_features(texts, features):
+            #    def count_features(words):
+            #        return [words.count(feature) for feature in features]
+            #    return np.array([count_features(text.split()) for text in texts])
 
-            X = transform_to_features(preprocessed_df['stemmedtext'], features)
+            #X = transform_to_features(preprocessed_df['stemmedtext'], features)
+            X = np.array(preprocessed_df['TF_IDF_Vec'].tolist())
             y = df['label'].values.astype(int)  # Use the newly created label column
 
             # Initialize and train the model with default parameters
