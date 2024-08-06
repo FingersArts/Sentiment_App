@@ -99,6 +99,7 @@ def calc_TF_IDF_Vec(__TF_IDF_Dict, unique_term):
     return TF_IDF_vector
 
 # Main function to process the dataframe
+@st.cache_data
 def preprocess_and_calculate_tfidf(df):
     df2 = df.drop_duplicates(subset=["text"])
     df3 = df2[df2['text'].str.len() >= 4]
