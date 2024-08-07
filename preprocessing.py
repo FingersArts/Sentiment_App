@@ -37,7 +37,7 @@ response = requests.get(sastrawi_stopword)
 stopwords_l += response.text.split('\n')
 
 custom_st = '''
-yg yang dgn ane smpai bgt gua gwa si tu ama utk udh btw
+yg yang dgn ane smpai bgt gua gwa si tu ama utk udh btw httpst
 ntar lol ttg emg aj aja tll sy sih kalo nya trsa mnrt nih
 '''
 st_words = set(stopwords_l)
