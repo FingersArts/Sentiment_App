@@ -35,7 +35,7 @@ with tab2:
             preprocessed_df, ranking = preprocess_and_calculate_tfidf(df)
             
             st.subheader('Data After Preprocessing')
-            st.write(preprocessed_df[['text', 'casefolding', 'cleanedtext', 'stopwordremoved', 'stemmedtext', 'tokenize']])
+            st.write(preprocessed_df[['text', 'casefolding', 'cleanedtext', 'slangremoved', 'stopwordremoved', 'stemmedtext', 'tokenize']])
 
             # Count word frequencies in the 'stemmedtext' column
             word_counts = preprocessed_df['stemmedtext'].str.split(expand=True).stack().value_counts()
