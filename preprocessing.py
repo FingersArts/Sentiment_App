@@ -30,6 +30,15 @@ def cleaning_text(text):
     text = re.sub(r"\d+", "", text)
     return text.strip()
 
+# Muat kamus slangword dari file CSV
+kamus_slang = pd.read_csv("kamus-slang.csv", header=None, names=['slang', 'formal'])
+lookup_dict = dict(zip(kamus_slang['slang'], kamus_slang['formal']))
+# Mengganti kata slang dengan kata asli
+def slangremove(text, lookup_dict=lookup_dict):
+    words = text.split()
+    new_words = [lookup_dict.get(word, word) for word in words]
+    return ' '.join(new_words)
+
 # Define stopwords
 sastrawi_stopword = "https://raw.githubusercontent.com/onlyphantom/elangdev/master/elang/word2vec/utils/stopwords-list/sastrawi-stopwords.txt"
 stopwords_l = stopwords.words('indonesian')
@@ -104,7 +113,8 @@ def preprocess_and_calculate_tfidf(df):
     df3 = df2[df2['text'].str.len() >= 4]
     df3['casefolding'] = df3['text'].str.lower()
     df3['cleanedtext'] = df3['casefolding'].apply(cleaning_text)
-    df3['stopwordremoved'] = df3['cleanedtext'].apply(remove_stopword)
+    df3['slangremoved'] = df3['cleanedtext'].apply(lambda x: slangremove(x, lookup_dict))
+    df3['stopwordremoved'] = df3['slangremoved'].apply(remove_stopword)
     df3['stemmedtext'] = df3['stopwordremoved'].apply(stemming)
     df3['tokenize'] = df3['stemmedtext'].apply(tokenize)
     
