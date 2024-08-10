@@ -158,7 +158,7 @@ with tab4:
 with tab5:
     if uploaded_file is not None:
         
-        if 'preprocessed_df' in local:
+        if 'preprocessed_df' in locals():
             
             st.subheader('Prediksi Sentimen')
             # Text input from the user
