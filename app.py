@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 st.title('Multinomial Logistic Regression Stage')
 
 # Create tabs
-tab1, tab2, tab3, tab4 = st.tabs(["Upload Data", "Preprocessing", "TF-IDF Results", "Multinomial Logistic Regression"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Upload Data", "Preprocessing", "TF-IDF", "Multinomial Logistic Regression", "Prediksi Sentimen"])
 
 # Tab for uploading data
 with tab1:
