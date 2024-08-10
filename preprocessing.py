@@ -11,7 +11,6 @@ import ast
 
 # Download required NLTK resources
 nltk.download(['stopwords', 'punkt', 'wordnet'])
-nltk.download('punkt_tab')
 
 # Initialize the stemmer outside the stemming function
 factory = StemmerFactory()
@@ -47,7 +46,7 @@ response = requests.get(sastrawi_stopword)
 stopwords_l += response.text.split('\n')
 
 custom_st = '''
-yg yang dgn ane smpai bgt gua gwa si tu ama utk udh btw httpst
+yg yang dgn ane smpai bgt gua gwa si tu ama utk udh btw
 ntar lol ttg emg aj aja tll sy sih kalo nya trsa mnrt nih
 '''
 st_words = set(stopwords_l)
@@ -60,13 +59,13 @@ def remove_stopword(text, stop_words=stop_words):
     filtered_sentence = [w for w in word_tokens if not w in stop_words]
     return ' '.join(filtered_sentence)
 
-# Define tokenization function
-def tokenize(text):
-    return word_tokenize(text)
-
 # Define stemming function
 def stemming(text):
     return stemmer.stem(text)
+
+# Define tokenization function
+def tokenize(text):
+    return word_tokenize(text)
 
 # Define functions for TF-IDF calculation
 def convert_text_list(texts):
@@ -300,6 +299,7 @@ def k_fold_cross_validation(X, y, model, k=10):
 
     return (np.mean(accuracy_scores), avg_precision_per_class, avg_recall_per_class,
             total_cm / k, avg_class_accuracies, avg_precision_per_class, avg_recall_per_class)
+
 
 # Function to preprocess user input
 def preprocess_input(text):
