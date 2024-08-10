@@ -110,19 +110,19 @@ with tab4:
             col1, col2, col3 = st.columns(3)
 
             with col1:
-                st.markdown("### Akurasi per Kelas:")
+                st.markdown("### Akurasi tiap Kelas:")
                 st.markdown(f"**Sentiment negative**: {avg_class_accuracies[0]:.6f}")
                 st.markdown(f"**Sentiment neutral**: {avg_class_accuracies[1]:.6f}")
                 st.markdown(f"**Sentiment positive**: {avg_class_accuracies[2]:.6f}")
 
             with col2:
-                st.markdown("### Precision per Kelas:")
+                st.markdown("### Precision tiap Kelas:")
                 st.markdown(f"**Sentiment negative**: {avg_precision_per_class[0]:.6f}")
                 st.markdown(f"**Sentiment neutral**: {avg_precision_per_class[1]:.6f}")
                 st.markdown(f"**Sentiment positive**: {avg_precision_per_class[2]:.6f}")
 
             with col3:
-                st.markdown("### Recall per" "### Kelas:")
+                st.markdown("### Recall tiap Kelas:")
                 st.markdown(f"**Sentiment negative**: {avg_recall_per_class[0]:.6f}")
                 st.markdown(f"**Sentiment neutral**: {avg_recall_per_class[1]:.6f}")
                 st.markdown(f"**Sentiment positive**: {avg_recall_per_class[2]:.6f}")
