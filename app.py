@@ -110,7 +110,7 @@ with tab4:
             col1, col2, col3 = st.columns(3)
 
             with col1:
-                st.markdown("### Average Class Accuracies:")
+                st.markdown("### Average Accuracies per Class:")
                 st.markdown(f"**Sentiment negative**: {avg_class_accuracies[0]:.6f}")
                 st.markdown(f"**Sentiment neutral**: {avg_class_accuracies[1]:.6f}")
                 st.markdown(f"**Sentiment positive**: {avg_class_accuracies[2]:.6f}")
