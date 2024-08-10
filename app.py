@@ -122,7 +122,7 @@ with tab4:
                 st.markdown(f"**Sentiment positive**: {avg_precision_per_class[2]:.6f}")
 
             with col3:
-                st.markdown("### Recall per \n ###Kelas:")
+                st.markdown("### Recall per \n" "### Kelas:")
                 st.markdown(f"**Sentiment negative**: {avg_recall_per_class[0]:.6f}")
                 st.markdown(f"**Sentiment neutral**: {avg_recall_per_class[1]:.6f}")
                 st.markdown(f"**Sentiment positive**: {avg_recall_per_class[2]:.6f}")
