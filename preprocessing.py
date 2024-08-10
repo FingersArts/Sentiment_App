@@ -11,6 +11,7 @@ import ast
 
 # Download required NLTK resources
 nltk.download(['stopwords', 'punkt', 'wordnet'])
+nltk.download('punkt_tab')
 
 # Initialize the stemmer outside the stemming function
 factory = StemmerFactory()
